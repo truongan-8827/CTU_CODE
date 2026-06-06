@@ -45,19 +45,19 @@ ElementType retrieve(Position P, List L){
 }
 
 void insertList(ElementType x, Position p, List *pL)
-{
-	if (fullList(*pL))
-		printf("Danh sach day");	
+ {
+ 	if (fullList(*pL))
+ 		printf("Danh sach day");	
   	else if ((p<1) || (p>pL->Last+1))
-	    printf("Vi tri khong hop le");
-	else 
-	{
-	  Position q;   
-	  for(q=pL->Last; q>=p; q--)
-		 pL->Elements[q]=pL->Elements[q-1];	  
-	  pL->Elements[p-1]=x;	  
-	  pL->Last++;
-	 }
+ 	    printf("Vi tri khong hop le");
+ 	else 
+ 	{
+ 	  Position q;   
+ 	  for(q=pL->Last; q>=p; q--)
+ 		pL->Elements[q]=pL->Elements[q-1];	  
+ 	  pL->Elements[p-1]=x;	  
+ 	  pL->Last++;
+ 	}
 }
 
 // Ham xoa phan tu
