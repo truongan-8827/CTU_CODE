@@ -1,41 +1,36 @@
 #include "AListLib.c"
 #include "funtionsHaySuDung.c"
 
-
-void unionSet(List L1,List L2,List *pL){
-    int j;
-    makenullList(pL);
-    for(j=0;j<L1.Last;j++)
-        insertSet(L1.Elements[j],pL);
-    for(j=0;j<L2.Last;j++)
-        if(!member(L2.Elements[j],*pL))
-            insertSet(L2.Elements[j],pL);
+void normalize(List *pL){
+    int p=1,q;
+    while(p!=(pL->Last+1)){
+        q=p+1;
+        while(q!=(pL->Last)+1){
+            if(pL->Elements[p-1]==pL->Elements[q-1])
+                deleteList(q,pL);
+            else
+                q++;
+        }
+        p++;
+    }
 }
+
 
 int main(){
-    List L1,L2,L;
+/////////////////
+   List L;
 int i;
-
-makenullList(&L1);
-makenullList(&L2);
-
-for(i=0;i<=5;i++){
-    insertSet(2*i, &L1);
-}
-for(i=10;i>=4;i--){
-    insertSet(2*i, &L2);
-}
-
-for(i=0;i<L1.Last;i++){
-    printf("%d ",L1.Elements[i]);
-}
-printf("\n");
-for(i=0;i<L2.Last;i++){
-    printf("%d ",L2.Elements[i]);
-}
-printf("\n");
-unionSet(L1,L2,&L);
-for(i=0;i<L.Last;i++){
+L.Last = 6;
+L.Elements[0] = 0;
+L.Elements[1] = 14;
+L.Elements[2] = 10;
+L.Elements[3] = -100;
+L.Elements[4] = 14;
+L.Elements[5] = 14;
+normalize(&L);
+for(i=0;i<L.Last;i++)
+{
     printf("%d ",L.Elements[i]);
 }
+/////////////////
 }

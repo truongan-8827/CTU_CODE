@@ -1,5 +1,3 @@
-#include "AListLib.c"
-
 //hàm xóa tất cả phần tử có giá trị x trong danh sách đặc các số nguyên.
 void removeAll(int x,List *pL){
     Position p=locate(x,*pL);
@@ -148,4 +146,68 @@ void unionSet(List L1,List L2,List *pL){
     for(j=0;j<L2.Last;j++)
         if(!member(L2.Elements[j],*pL))
             insertSet(L2.Elements[j],pL);
+}
+
+//hàm xóa phần tử ở vị trí p trong danh sách
+void deleteList(int p,List *pL){
+    if(pL->Last==0)     
+        printf("DS rong");
+    else if(p>pL->Last || p<1)
+        printf("Vi tri khong hop le\n");
+    else{
+        int i;
+        for(i=p;i<pL->Last;i++)
+            pL->Elements[i-1]=pL->Elements[i];
+        (pL->Last)--;
+        }  
+}
+
+//hàm liệt kê tất cả các phần tử là số lẻ trong danh sách.
+void printOddNumbers(List L){
+    if(L.Last==0) printf("DS rong");
+    else{
+        int p;
+        for(p=0;p<L.Last;p++)
+            if(L.Elements[p]%2!=0) 
+                printf("%d ",L.Elements[p]);
+    }
+}
+
+//hàm chép toàn bộ các số chẵn trong danh sách L1 sang danh sách kết quả.
+void copyEvenNumbers(List L1, List *pL2){
+    if(L1.Last==0) printf("DS rong, khong the copy Even Numbers");
+    else{
+        int p;
+        for(p=0;p<L1.Last;p++)
+            if(L1.Elements[p]%2==0)
+                insertSet(L1.Elements[p],pL2);
+    }
+}
+
+//hàm chép toàn bộ các số chẵn trong danh sách L1 sang danh sách kết quả.
+void copyEvenNumbers(List L1, List *pL2){
+    makenullList(pL2);
+    if(L1.Last==0) printf("DS rong, khong the copy Even Numbers");
+    else{
+        int j,p=0;
+        for(j=0;j<L1.Last;j++)
+            if(L1.Elements[j]%2==0)
+                insertList(L1.Elements[j],++p,pL2);
+    }
+}
+
+//hàm chuẩn hóa một danh sách, tức các phần tử trong danh sách nếu trùng nhau thì 
+//chỉ giữ lại 1 phần tử, các phần tử khác bị xóa bỏ.
+void normalize(List *pL){
+    int p=1,q;
+    while(p!=(pL->Last+1)){
+        q=p+1;
+        while(q!=(pL->Last)+1){
+            if(pL->Elements[p-1]==pL->Elements[q-1])
+                deleteList(q,pL);
+            else
+                q++;
+        }
+        p++;
+    }
 }
