@@ -1,3 +1,5 @@
+#include "AListLib.c"
+
 //hàm xóa tất cả phần tử có giá trị x trong danh sách đặc các số nguyên.
 void removeAll(int x,List *pL){
     Position p=locate(x,*pL);
