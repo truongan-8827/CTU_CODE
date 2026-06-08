@@ -1,3 +1,4 @@
+#include <stdio.h>
 struct SinhVien{
    char MSSV[10];
    char HoTen[50];
