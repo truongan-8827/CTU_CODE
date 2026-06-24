@@ -1,4 +1,4 @@
-package Buoi2Diem;
+package Buoi2bai1;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package Buoi2Diem;
+package Buoi2bai1;
 
 public class SDDiem {
 
@@ -20,7 +20,7 @@ public class SDDiem {
 		C.hienThi();
 		
 		System.out.println("--Tạo điểm D và copy A cho D--");
-		Diem D=new Diem(A);
+		Diem D= new Diem(A);
 		System.out.println("Hiển thị điểm D\n"+D);
 		
 		System.out.println("khoảng cách từ điểm B đến tâm 0 là:"+ B.khoangCach());
