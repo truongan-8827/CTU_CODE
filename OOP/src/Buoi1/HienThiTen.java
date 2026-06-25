@@ -2,7 +2,7 @@ package Buoi1;
 
 import java.util.Scanner;
 
-public class baitap7 {
+public class HienThiTen {
 	public static int firstName(String s) {
 		s.trim();
 		int temp=s.lastIndexOf(' ');

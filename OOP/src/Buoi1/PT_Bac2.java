@@ -2,7 +2,7 @@ package Buoi1;
 
 import java.util.Scanner;
 
-public class baitap5 {
+public class PT_Bac2 {
 	public static void bac1(double b, double c) {
 		if(b!=0) System.out.println("PT bậc 1 có 1 nghiệm: " + (-c/b));
 		else if(c!=0) System.err.println("PT VN");

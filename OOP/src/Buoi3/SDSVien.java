@@ -1,4 +1,4 @@
-package Buoi3bai3;
+package Buoi3;
 
 public class SDSVien {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Buoi2Date;
+package Buoi2;
 
 import java.util.Scanner;
 

@@ -2,7 +2,7 @@ package Buoi1;
 
 import java.util.Scanner;
 
-public class baitap6 {
+public class KTSoNguyenTo_inSoNhiPhan {
 	public static boolean primeNumbers(int m) {
 		int i;
 		for(i=2;i<=Math.sqrt(m);i++)

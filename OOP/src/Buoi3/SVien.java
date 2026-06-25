@@ -1,8 +1,8 @@
-package Buoi3bai3;
+package Buoi3;
 
 import java.util.Scanner;
 
-import Buoi2Date.Date;
+import Buoi2.Date;
 
 public class SVien {
 	private String mssv,hten;

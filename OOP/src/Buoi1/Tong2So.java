@@ -2,7 +2,7 @@ package Buoi1;
 
 import java.util.Scanner;
 
-public class baitap4 {
+public class Tong2So {
 	static Scanner sc = new Scanner(System.in);
 	public static int nhapSo() {
 		String s; int soNguyen=0;

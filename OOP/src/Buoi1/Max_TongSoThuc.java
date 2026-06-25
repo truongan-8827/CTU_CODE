@@ -1,6 +1,6 @@
 package Buoi1;
 
-public class baitap3 {
+public class Max_TongSoThuc {
 	public static void main(String[] args) {
 		int n,d=1;
 		double m,tong=0,max=-Double.MAX_VALUE; //lấy -Max vì Min chỉ tiến gần tới 0 (đối với double)

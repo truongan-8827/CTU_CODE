@@ -1,4 +1,4 @@
-package Buoi2bai1;
+package Buoi2;
 
 public class SDDiem {
 

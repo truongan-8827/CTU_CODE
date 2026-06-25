@@ -2,7 +2,7 @@ package Buoi1;
 
 import java.util.Scanner;
 
-public class baitap8 {
+public class DanhSach {
 	public static int dem(int X,int ds[]) {
 		int d=0;
 		for (int i : ds) {
