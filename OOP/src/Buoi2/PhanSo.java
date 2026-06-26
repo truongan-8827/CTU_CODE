@@ -92,8 +92,8 @@ public class PhanSo {
 		System.out.println("nhap so luong phan tu DS");
 		int n; n=sc.nextInt();
 		PhanSo[] ds=new PhanSo[n];
-		for(int i=0;i<n;i++) ds[i] = new PhanSo();
 		for(int i=0;i<n;i++) {
+			ds[i] = new PhanSo();
 			System.out.println("nhap phan so thu "+(i+1));
 			ds[i].nhapPhanSo();
 			ds[i].chuanhoaPhanSo();
