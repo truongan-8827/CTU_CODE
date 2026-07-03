@@ -116,7 +116,7 @@ public class PhanSo {
 		for(int i=0;i<d.length;i++) {
 			if(max<d[i].tinhPhanSo()) {
 				max=d[i].tinhPhanSo();
-				count++;
+				count=i;
 			}
 		}
 		return new PhanSo(d[count]);
