@@ -43,11 +43,12 @@ public class Gach {
 	public int soLuongHop(int D,int N) {
 		// ta co 2 TH neu chieu DAI theo chieu DAI DTich
 		// va chieu DAI theo chieu RONG DTich
-		int t1 = (int)(Math.ceil((double)D/this.d)*Math.ceil((double)N/this.r));
-		int t2 = (int)(Math.ceil((double)D/this.r)*Math.ceil((double)N/this.d));
+		int t1 = (int)Math.ceil((Math.ceil((double)D/this.d)*Math.ceil((double)N/this.r))/n); 
+		int t2 = (int)Math.ceil((Math.ceil((double)D/this.r)*Math.ceil((double)N/this.d))/n);
 		if(t1>t2) return t2;
 		else return t1;
-	}
+//	}
+	// fix lại phần này.
 	public Gach[] taoDS() {
 		Scanner sc=new Scanner(System.in);
 		System.out.print("Nhập số loại gạch: ");
