@@ -34,60 +34,24 @@ public class Gach {
 		System.out.println("Mã số: " +maSo+",màu: "+mau+",số lượng: "+n+",kích thước: "+d+"x"+r+",giá một hộp: "+giaMotHop);
 	}
 	public String toString() {return "Mã số: " +maSo+",màu: "+mau+",số lượng: "+n+",kích thước: "+d+"x"+r+",giá một hộp: "+giaMotHop;}
-	public double giaBanLe(){// cao hon 20%
-		return 1.2*this.giaMotHop;
+	public float giaBanLe(){// cao hon 20%
+		return (float)1.2*giaMotHop/n;
 	}
 	public int dienTich() {
-		return this.n*this.d*this.r;
+		return n*d*r;
 	}
 	public int soLuongHop(int D,int N) {
-		// ta co 2 TH neu chieu DAI theo chieu DAI DTich
-		// va chieu DAI theo chieu RONG DTich
-		int t1 = (int)Math.ceil((Math.ceil((double)D/this.d)*Math.ceil((double)N/this.r))/n); 
-		int t2 = (int)Math.ceil((Math.ceil((double)D/this.r)*Math.ceil((double)N/this.d))/n);
-		if(t1>t2) return t2;
-		else return t1;
-//	}
-	// fix lại phần này.
-	public Gach[] taoDS() {
-		Scanner sc=new Scanner(System.in);
-		System.out.print("Nhập số loại gạch: ");
-		int n; n=sc.nextInt();
-		Gach[] ds=new Gach[n];
-		for(int i=0;i<n;i++) {
-			ds[i] = new Gach();
-			System.out.println("Nhập loại gạch thứ "+(i+1));
-			ds[i].nhap();
-		}
-		return ds;
+		//nếu lót chiều dài gạch theo chiều dài của diện tích.
+		double chieudai = (Math.ceil((double)D/d)*Math.ceil((double)N/r)); // có thể tính bằng cách (D+d-1)/d;
+		//nếu lót chiều dài gạch theo chiều rộng của diện tích
+		double chieungang = (Math.ceil((double)D/r)*Math.ceil((double)N/d));
+		// so sánh và trẩ về số lượng hộp
+		double min= Math.min(chieudai, chieungang);
+		return (int)Math.ceil((double)min/n);
 	}
-	public void hienThiDS(Gach[] ds) {
-		for(int i=0;i<ds.length;i++) {
-			System.out.println("Loại gạch số "+(i+1));
-			ds[i].hienThi();
-		}
+	public float CPTrenDienTich() {
+		return (float)giaMotHop/this.dienTich();
 	}
-	public double chiPhiLot() {
-		int dtich=this.dienTich();
-		return (double)this.giaBanLe()/dtich;
-	}
-	public Gach GachCPMin(Gach[] a) {
-		double min=a[0].chiPhiLot();
-		int count=0;
-		for(int i=1;i<a.length;i++) {
-			if(min>a[i].chiPhiLot()) {
-				min=a[i].chiPhiLot();
-				count=i;
-			}
-		}
-		Gach b = new Gach(a[count]);
-		return b;
-	}
-	public void hienThiDSCP(Gach[] a,int d,int r) {
-		for(int i=0;i<a.length;i++) {
-			System.out.println("Loại gạch số "+(i+1));
-			a[i].hienThi();
-			System.out.println("Chi phí cho loại này: "+(a[i].soLuongHop(d, r)*a[i].giaMotHop));
-		}
-	}
+	public String getmaSo() {return maSo;}
+	public long getGiaMotHop() {return giaMotHop;}
 }
