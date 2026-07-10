@@ -17,7 +17,7 @@ public class SVien {
 		mon= new String[60];
 		diem= new String[60];
 	}
-		public SVien(SVien S) {
+	public SVien(SVien S) {
 			mssv= new String(S.mssv);
 			hten= new String(S.hten);
 			ngaySinh = new Date(S.ngaySinh);
@@ -38,21 +38,21 @@ public class SVien {
 			sc.nextLine();
 			if(n>60) n=60;
 			for(int i=0;i<n;i++) {
-				System.out.println("Nhập môn thứ "+(i+1)+":");
+				System.out.println("Nhập môn thứ "+(i+1)+": ");
 				mon[i]=sc.nextLine();
-				System.out.print("Nhập điểm môn "+mon[i]);
+				System.out.print("Nhập điểm môn "+mon[i]+": ");
 				diem[i]=sc.nextLine();
 			}
 		}
 		public void in() {
-			System.out.println("["+mssv+","+hten+","+ngaySinh+"]");
+			System.out.print("["+mssv+","+hten+","+ngaySinh);
 			for(int i=0;i<n;i++) {
 				System.out.print(","+mon[i]+","+diem[i]);
 			}
 			System.out.println("]");
 		}
 		public String toString() {
-			String S=("["+mssv+","+hten+","+ngaySinh+"]");
+			String S=("["+mssv+","+hten+","+ngaySinh);
 			for(int i=0;i<n;i++) {
 				S+=(","+mon[i]+","+diem[i]);
 			}
@@ -62,11 +62,14 @@ public class SVien {
 		public float dtb() {
 			float d=0.0f;
 			for(int i=0;i<n;i++) {
-				if(diem[i].equals("A")) d+=4;
+				if(diem[i].equals("A")) d+=4.0;
 				else if(diem[i].equals("B+")) d+=3.5;
-				else if(diem[i].equals("B")) d+=3;
+				else if(diem[i].equals("B")) d+=3.0;
 				else if(diem[i].equals("C+")) d+=2.5;
-				//....................
+				else if(diem[i].equals("C")) d+=2.0;
+				else if(diem[i].equals("D+")) d+=1.5;
+				else if(diem[i].equals("D")) d+=1.0;
+				else if(diem[i].equals("F")) d+=0.0;
 			}
 			return d/n;
 		}
@@ -97,7 +100,18 @@ public class SVien {
 			}
 			else System.out.println("không tìm thấy");
 		}
-		// mảng đối tươngj sinh viên
-		SVien ds[];
-		//............
+		public void canhBaoHocVu() {
+			for(int i=0;i<n;i++)
+				if(diem[i].equals("F")) {
+					System.out.println("Sinh viên: "+hten+",MSSV: "+mssv+" bị cảnh cáo học vụ");
+					break;
+				}
+		}
+		public char FirstCharOfName() {
+			hten=hten.trim();
+			int p=hten.lastIndexOf(" ");
+			//nếu chỉ có 1 từ thì p=-1 và trả về kí tự ở index=0;
+			if(p==-1) return hten.charAt(0); 
+			return hten.charAt(p+1);
+		}
 }
