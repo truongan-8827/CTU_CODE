@@ -1,4 +1,4 @@
-package Buoi1;
+package buoi1;
 
 public class Max_TongSoThuc {
 	public static void main(String[] args) {

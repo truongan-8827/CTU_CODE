@@ -1,4 +1,6 @@
-package Buoi3;
+package buoi3;
+
+import buoi2.Diem;
 
 public class SDDoanThang {
 	public static void main(String[] args) {
@@ -16,7 +18,7 @@ public class SDDoanThang {
 		CD.nhap();
 		System.out.println("Đoạn CD có tọa độ:");
 		CD.hienthi();
-		System.out.println("Độ dài đoạn CD là: "+CD.tinhDoDai());
-		System.out.println("Góc của đoạn thẳng CD với trục hoành: "+ CD.tinhGocHopOx()+"(độ)");
+		System.out.printf("Độ dài đoạn CD là: %.2f\n",CD.tinhDoDai());
+		System.out.printf("Góc của đoạn thẳng CD với trục hoành: %.2f (độ)\n",CD.tinhGocHopOx());
 	}
 }

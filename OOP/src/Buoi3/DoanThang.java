@@ -1,4 +1,6 @@
-package Buoi3;
+package buoi3;
+
+import buoi2.Diem;
 
 public class DoanThang {
 	Diem d1,d2;
@@ -27,7 +29,7 @@ public class DoanThang {
 		d2.doiDiem(dx, dy);
 	}
 	public double tinhDoDai() {return d1.khoangCach(d2);}
-	public double tinhGocHopOx() { //góc alpha=(d1d2,Ox) nghĩa là góc luô <=90 và >=0 
+	public double tinhGocHopOx() { //góc alpha=(d1d2,Ox) nghĩa là góc luôn <=90 và >=0 
 		double alpha,sin;
 		sin=Math.abs((double)(d1.giaTriY()-d2.giaTriY())/this.tinhDoDai());
 		alpha=Math.toDegrees(Math.asin(sin));

@@ -1,8 +1,8 @@
-package Buoi3;
+package buoi3;
 
 import java.util.Scanner;
 
-import Buoi2.Date;
+import buoi2.Date;
 
 public class SVien {
 	private String mssv,hten;
@@ -102,7 +102,7 @@ public class SVien {
 		}
 		public void canhBaoHocVu() {
 			for(int i=0;i<n;i++)
-				if(diem[i].equals("F")) {
+				if(this.dtb()<1.0) {
 					System.out.println("Sinh viên: "+hten+",MSSV: "+mssv+" bị cảnh cáo học vụ");
 					break;
 				}

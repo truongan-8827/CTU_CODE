@@ -1,4 +1,4 @@
-package Buoi2;
+package buoi2;
 
 public class DThang {
 
