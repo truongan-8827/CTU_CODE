@@ -18,7 +18,7 @@ public class DiemMau extends Diem {
 	}
 
 	public DiemMau(DiemMau a) {
-		super(a.giaTriX(), a.giaTriY());
+		super((Diem)a);
 		mau = new String(a.mau);
 	}
 
