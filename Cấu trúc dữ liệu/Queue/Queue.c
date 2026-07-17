@@ -64,16 +64,10 @@ void nhap(int n, Queue *pQ){
 }
 
 int main(){
-    char string[400],chuoiso[200];
-    fgets(string,400,stdin); if(string[strlen(string)-1]=='\n') string[strlen(string)-1]='\0';
-    fgets(chuoiso,100,stdin); if(chuoiso[strlen(chuoiso)-1]=='\n') chuoiso[strlen(chuoiso)-1]='\0';
-    Queue q; makenullQueue(&q);
-    int i;
-    for(i=0;i<strlen(chuoiso);i++) enQueue(chuoiso[i],&q);   
-    for(i=0;i<strlen(string);i++){
-        string[i]=string[i]+(front(q)-'0');
-        enQueue(front(q),&q);
-        deQueue(&q);
-    }
-    printf("%s",string);
+    int n=1;
+    printf("khách thứ %d/n",n);
+    int a=120;
+    int b=15;
+    printf("thời gian đến %d, thời gian đi %d, thời gian chờ %d, thời gian xử lí %d",n*b,n*a+b,n*a-(n-1)*b,n*a+b);
 }
+
