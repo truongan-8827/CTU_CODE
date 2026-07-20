@@ -66,8 +66,7 @@ void nhap(int n, Queue *pQ){
 int main(){
     int n=1;
     printf("khách thứ %d/n",n);
-    int a=120;
-    int b=15;
+    int a=120,b=15;
     printf("thời gian đến %d, thời gian đi %d, thời gian chờ %d, thời gian xử lí %d",n*b,n*a+b,n*a-(n-1)*b,n*a+b);
 }
 
