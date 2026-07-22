@@ -8,6 +8,11 @@ struct Node{
 };
 typedef struct Node* Tree;
 
+Tree initTree(){
+    Tree T=NULL;
+    return T;
+}
+
 Tree Search(KeyType x,Tree Root){
     if(Root==NULL) return NULL;
     else if(Root->Key==x) return Root;
@@ -24,9 +29,11 @@ void insertNode(KeyType x,Tree *T){
         (*T)->Left=NULL;
         (*T)->Right=NULL;
     }
-    else if(x>(*T)->Key) insertNode(x,&(*T)->Right);
+    else{
+    if(x>(*T)->Key) insertNode(x,&(*T)->Right);
     else if(x<(*T)->Key) insertNode(x,&(*T)->Left);
-    else if(x==(*T)->Key) printf("Da ton tai khoa %d",x);
+    else printf("Da ton tai khoa %d",x);    
+    }
 }
 
 //Tim nut con nho nhat ben phai
@@ -85,21 +92,127 @@ void preOrder(Tree T){
 
 void inOrder(Tree T){
     if(T!=NULL){
-        if(T->Left!=NULL) inOrder(T->Left); //duyet nut la nho nhat ben trai dau tien
+        if(T->Left!=NULL) posOrder(T->Left);
         printf("%d ",T->Key);
-        if(T->Right!=NULL) inOrder(T->Right);
+        if(T->Right!=NULL) posOrder(T->Right);
     }
 }
 
+void posOrder(Tree T){
+    if(T!=NULL){
+        if(T->Left!=NULL) posOrder(T->Left);
+        if(T->Right!=NULL) posOrder(T->Right);
+        printf("%d ",T->Key);
+    }
+}
 
 Tree getPrevious(int x,Tree T){
+    Tree sp=NULL;
+    Tree p=T;
+    while(p!=NULL){
+        if(x<p->Key){
+            p=p->Left;
+        }
+        else if(x>p->Key){
+            sp=p;
+            p=p->Right;
+        }
+        else if(x==p->Key){
+            if(p->Left!=NULL){
+                Tree temp=p->Left;
+                while(temp->Right!=NULL) temp=temp->Right;
+                return temp;
+            }
+            else return sp;
+        }
+    }
+    return NULL;
+}
 
+Tree getNext(int x,Tree T){
+    Tree sp=NULL;
+    Tree p=T;
+    while(p!=NULL){
+        if(x>p->Key){
+            p=p->Right;
+        }
+        else if(x<p->Key){
+            sp=p;
+            p=p->Left;
+        }
+        else{
+            if(p->Right!=NULL){
+                Tree temp=p->Right;
+                while(temp->Left!=NULL) temp=temp->Left;
+                return temp;
+            }
+            else return sp;
+        }
+    }
+    return NULL;
+}
+
+Tree rightSibling(int x,Tree T){
+    Tree sp=NULL;
+    Tree p=T;
+    while(p!=NULL){
+        if(x<p->Key){
+            sp=p->Right;
+            p=p->Left;
+        }
+        else if(x>p->Key){
+            if(sp!=NULL) sp=sp->Left;
+            p=p->Right;
+        }
+        else{
+            return sp;
+        }
+    }
+    return NULL;
+}
+
+int getHeight(Tree T){
+    if(T==NULL) return -1;
+    int left=getHeight(T->Left);
+    int right=getHeight(T->Right);
+    if(left>right) return left+1;
+    return right+1;
+}
+
+int hNode(int x,Tree T){
+    Tree p=T;
+    while(p!=NULL && p->Key!=x){
+        if(x>p->Key){
+            p=p->Right;
+        }
+        else if(x<p->Key){
+            p=p->Left;
+        }
+    }
+    return getHeight(p);
+}
+
+Tree getParent(int x,Tree T){
+    Tree parent=NULL;
+    Tree p=T;
+    while(p!=NULL){
+        if(x>p->Key){
+            parent =p;
+            p=p->Right;
+        }
+        else if(x<p->Key){
+            parent=p;
+            p=p->Left;
+        }
+        else{
+            return parent;
+        }
+    }
+    return NULL;
 }
 
 int main(){
-	
 Tree T=NULL;
-Tree p;
 int x;
 
 insertNode(27,&T);
@@ -108,13 +221,9 @@ insertNode(40,&T);
 insertNode(4,&T);
 insertNode(20,&T);
 insertNode(34,&T);
-insertNode(30,&T);
-insertNode(50,&T);
-x=30;
+insertNode(30,&T); 
+insertNode(50,&T); 
 
-
-p = getPrevious(x,T);
-if (p==NULL)
-   printf("%d khong co nut dung truoc",x);
-else printf("Nut dung truoc la %d",p->Key);
+x = 27;
+printf("Chieu cao %d la %d",x,hNode(x,T));
 }
