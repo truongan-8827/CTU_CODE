@@ -2,7 +2,7 @@
 #include<string.h>
 #include<malloc.h>
 
-#define Maxlength 80
+#define Maxlength 200
 typedef int ElementType;
 typedef struct{
     ElementType Elements[Maxlength];
@@ -55,18 +55,48 @@ void enQueue(ElementType x,Queue *pQ){
     pQ->Elements[pQ->Rear]=x;
 }
 
-void nhap(int n, Queue *pQ){
+float Time_avg(int soKH,int soQuay,float tgXL,float tgDen){
+    int time=0,tgDi,tgCho,PhucVu;
     int i;
-    for(i=0;i<n;i++){
-        int temp; scanf("%d",&temp);
-        enQueue(temp,pQ);
-    }
+    float QuayRanh[soQuay];// mỗi chỉ số đại diện 1 quầy
+    for(i=0;i<soQuay;i++) QuayRanh[i]=0;
+    Queue q; makenullQueue(&q);
+    //Lưu thời gian đến từng khách hàng.
+    for(i=1;i<=soKH;i++) enQueue(i*tgDen,&q);
+    //dùng for lồng while, giải thích:dùng for lặp sao cho chia đều vào n quầy(có TH dừng nếu khách hết giữa chừng), while lặp lại đến khi hết
+    while(!emptyQueue(q))
+        for(i=1;i<=soQuay;i++)
+            if(!emptyQueue(q)){// điều kiện hết giữa chừng.
+                //nếu thời gian khách hàng đến lớn hơn tg quầy rãnh lấy thời gian bắt đầu phục vụ từ khách hàng
+                //còn k thì phải đợi tới quầy rãnh
+                tgDen=front(q); deQueue(&q);
+                PhucVu=( tgDen > QuayRanh[i-1] )? tgDen : QuayRanh[i-1];
+
+                tgDi= PhucVu + tgXL;
+                tgCho= tgDi-tgDen;
+                //update tg quầy rãnh
+                QuayRanh[i-1]=tgDi;
+                time+=tgCho;
+            }
+    return time/soKH;
 }
 
 int main(){
-    int n=1;
-    printf("khách thứ %d/n",n);
-    int a=120,b=15;
-    printf("thời gian đến %d, thời gian đi %d, thời gian chờ %d, thời gian xử lí %d",n*b,n*a+b,n*a-(n-1)*b,n*a+b);
+    int soKH,soQuay;
+    float tgXuLi,tgDen,X;
+    scanf("%d%d%f%f%f",&soKH,&soQuay,&tgXuLi,&tgDen,&X);
+    int i=0;
+    float temp=0;
+    // làm lần lượt từ 1 quầy đến soQuay.
+    for(i=1;i<=soQuay;i++){
+        temp=Time_avg(soKH, i, tgXuLi, tgDen);
+        printf("So quay: %d; Thoi gian cho trung binh: %.1f\n",i,temp);
+        //nếu thời gian trung bình nhỏ hơn print và break vòng lặp;
+        if(temp<=X) break;
+    }
+    if(temp<=X)
+        printf("=> Sieu thi se mo %d quay\n",i);
+    else
+        printf("Voi %d quay hien co, khach phai cho it nhat %.1f giay moi duoc phuc vu.\n",soQuay,temp);
 }
 

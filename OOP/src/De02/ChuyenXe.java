@@ -2,32 +2,32 @@ package De02;
 
 import java.util.Scanner;
 
-public class ChuyenXe extends Xe{
+public class ChuyenXe {
 	private int msx;
 	private String tenlx;
 	private String nden;
 	private float dthu;
+	private Xe xe;
 	
 	public ChuyenXe() {
-		super();
 		msx=0;
 		tenlx=new String();
 		nden=new String();
 		dthu=0.0f;
+		xe=new Xe();
 	}
 	
 	public ChuyenXe(ChuyenXe e) {
-		super(e);
 		msx=e.msx;
 		tenlx=new String(e.tenlx);
 		nden=new String(e.nden);
 		dthu=e.dthu;
+		xe=new Xe(e.xe);
 	}
 	
-	@Override
 	public void nhap() {
 		Scanner sc=new Scanner(System.in);
-		super.nhap();
+		xe.nhap();
 		System.out.println("Nhap ma so chuyen xe:"); msx=sc.nextInt(); sc.nextLine();
 		System.out.println("Nhap ten nguoi lai xe:"); tenlx=sc.nextLine();
 		System.out.println("Nhap noi den:"); nden=sc.nextLine();
@@ -35,9 +35,8 @@ public class ChuyenXe extends Xe{
 		sc.nextLine();
 	}
 	
-	@Override
 	public void in() {
-		super.in();
+		xe.in();
 		System.out.println("Ma so xe: "+msx+", ten nguoi lai: "+tenlx+", noi den: "+nden+", doanh thu:"+dthu);
 	}
 	
@@ -50,7 +49,7 @@ public class ChuyenXe extends Xe{
 	}
 	
 	public String getThangNam() {
-		String s[]=this.getNgay().split("-");
+		String s[]=xe.getNgay().split("-");
 		return s[1]+"-"+s[2];
 	}
 	
@@ -77,13 +76,13 @@ public class ChuyenXe extends Xe{
 		System.out.println("Tat ca ma so xe bi huy hoac danh thu duoi 100.000");
 		for(int i=0;i<m;i++) {
 			int count=1;
-			if(ds1[i].getTthai()=='K' || ds1[i].getDthu()<100.0f) {
+			if(ds1[i].xe.getTthai()=='K' || ds1[i].getDthu()<100.0f) {
 				System.out.println("Ma so xe thu "+(count++)+": "+ds1[i].getMsx());
 			}
 		}
 		boolean xet[]=new boolean[m];
 		for(int i=0;i<m;i++) {
-			if(ds1[i].getTthai()!='K') xet[i]=true;
+			if(ds1[i].xe.getTthai()!='K') xet[i]=true;
 			else xet[i]=false;
 		}
 		for(int i=0;i<m;i++) {
