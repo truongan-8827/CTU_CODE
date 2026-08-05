@@ -103,23 +103,38 @@ int registerWithin(int t, TSet *T,int k){
 }
 
 //tra ve thoi diem truoc t (t co the khong co trong cay)
-int getPrevious(int t,TSet T){
-    TSet p=T,O=NULL;
-    while(p!=NULL){
-        if(t>p->tTime){
-            O=p;
-            p=p->Right;
+// int getPrevious(int t,TSet T){
+//     TSet p=T,O=NULL;
+//     while(p!=NULL){
+//         if(t>p->tTime){
+//             O=p;
+//             p=p->Right;
+//         }
+//         else if(t<p->tTime) p=p->Left;
+//         else break;
+//     }
+//     if(p!=NULL){//t nam trong T
+//         if(p->Left!=NULL){
+//             TSet temp=p->Left;
+//             while(temp->Right!=NULL) temp=temp->Right;
+//             return temp->tTime;
+//         }
+//     }
+//     if(O!=NULL) return O->tTime;
+//     return -9999;
+// }
+//Đây là code ban đầu
+
+//code sau chỉnh sửa
+int getPrevious(int t, TSet T) {
+    int res = -9999;
+    while (T != NULL) {
+        if (T->tTime < t) {
+            res = T->tTime; // Lưu lại giá trị này vì nó < t
+            T = T->Right;   // Thử rẽ phải xem có số nào lớn hơn mà vẫn < t không
+        } else {
+            T = T->Left;    // Nếu >= t, rẽ trái để tìm số nhỏ hơn
         }
-        else if(t<p->tTime) p=p->Left;
-        else break;
     }
-    if(p!=NULL){//t nam trong T
-        if(p->Left!=NULL){
-            TSet temp=p->Left;
-            while(temp->Right!=NULL) temp=temp->Right;
-            return temp->tTime;
-        }
-    }
-    if(O!=NULL) return O->tTime;
-    return -9999;
+    return res;
 }
