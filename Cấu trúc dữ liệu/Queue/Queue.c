@@ -50,9 +50,9 @@ void enQueue(ElementType x,Queue *pQ){
             pQ->Rear=Maxlength-1-pQ->Front;
             pQ->Front=0;
         }
+        pQ->Rear+=1;
+        pQ->Elements[pQ->Rear]=x; 
     }
-    pQ->Rear+=1;
-    pQ->Elements[pQ->Rear]=x;
 }
 
 float Time_avg(int soKH,int soQuay,float tgXL,float tgDen){
