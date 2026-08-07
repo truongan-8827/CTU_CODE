@@ -65,9 +65,9 @@ public class GDichTTe extends GDich{
 		}
 		
 		System.out.println("Hien thi cac ma so giao dich tien te co gia tri tren 100.000VN");
+		int d=0;
 		for(int i=0;i<n;i++) {
-			int j=0;
-			if(ds[i].tienVN()>100000f) System.out.println((++j)+".Ma giao dich: "+ds[i].mgd);
+			if(ds[i].tienVN()>100000f) System.out.println((++d)+".Ma giao dich: "+ds[i].mgd);
 		}
 		System.out.println("Thong ke so tien cua cac giao dich tien te theo thang-nam");
 		//tao mang boolean true neu la GDTT;

@@ -74,8 +74,8 @@ public class ChuyenXe {
 		//Một chuyến xe bị huỷ khi xe đó không được phép lưu hành. 
 		//Hiển thị tất cả mã số "chuyến xe bị huỷ hoặc có doanh thu dưới 100.000."
 		System.out.println("Tat ca ma so xe bi huy hoac danh thu duoi 100.000");
+		int count=1;
 		for(int i=0;i<m;i++) {
-			int count=1;
 			if(ds1[i].xe.getTthai()=='K' || ds1[i].getDthu()<100.0f) {
 				System.out.println("Ma so xe thu "+(count++)+": "+ds1[i].getMsx());
 			}

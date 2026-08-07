@@ -42,8 +42,8 @@ public class CNguoi {
 	public float getFloatYear() {
 		String[] s=this.getNgay().split("-");
 		float d=Float.parseFloat(s[0])/30f/12f;
-		float m=Float.parseFloat(s[0])/12f;
-		float y=Float.parseFloat(s[0]);
+		float m=Float.parseFloat(s[1])/12f;
+		float y=Float.parseFloat(s[2]);
 		return d+m+y;
 	}
 	public int getTuoi() {
