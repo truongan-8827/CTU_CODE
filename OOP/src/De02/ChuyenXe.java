@@ -24,7 +24,7 @@ public class ChuyenXe {
 		dthu=e.dthu;
 		xe=new Xe(e.xe);
 	}
-	
+
 	public void nhap() {
 		Scanner sc=new Scanner(System.in);
 		xe.nhap();

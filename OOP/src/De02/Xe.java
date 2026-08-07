@@ -37,7 +37,7 @@ public class Xe {
 	public char getTthai() {
 		return tthai;
 	}
-	
+
 	public String getNgay() {
 		return ngay;
 	}
