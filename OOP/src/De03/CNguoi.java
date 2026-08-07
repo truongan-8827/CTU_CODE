@@ -9,7 +9,7 @@ public class CNguoi {
 		id=new String();
 		hten=new String();
 		ngay=new String();
-		phai=' ';
+	 	phai=' ';
 	}
 	public CNguoi(CNguoi a) {
 		id=new String(a.id);
